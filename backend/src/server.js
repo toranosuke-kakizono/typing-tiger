@@ -1,5 +1,5 @@
 const express = require('express');
-const knex = require('../index');
+const knex = require('../knex');
 
 const app = express();
 

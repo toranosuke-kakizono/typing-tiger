@@ -2,29 +2,16 @@
   "name": "typing-tiger",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "migrate": "knex migrate:latest",
-    "migrate-rollback": "Knex migrate:rollback",
-    "migrate-make": "knex migrate:make",
-    "seed": "knex seed:run",
-    "seed-make": "knex seed:make"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@faker-js/faker": "^9.2.0",
-    "colyseus": "^0.15.17",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
     "jotai": "^2.10.1",
-    "knex": "^3.1.0",
-    "nodemon": "^3.1.7",
-    "pg": "^8.13.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sqlite3": "^5.1.7"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
