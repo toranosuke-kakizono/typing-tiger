@@ -13,6 +13,7 @@ exports.seed = async function(knex) {
   const users = [];
   for (let i = 0; i < 10; i++) {
     users.push({
+      display_name: faker.internet.displayName(),
       username: faker.internet.username(),
       mail_address: faker.internet.email(),
       password: faker.internet.password(),
