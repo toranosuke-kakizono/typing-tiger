@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "clear && nodemon ./src/index.js",
+    "dev": "clear && nodemon server.js",
     "migrate": "knex migrate:latest",
     "migrate-rollback": "Knex migrate:rollback",
     "migrate-make": "knex migrate:make",

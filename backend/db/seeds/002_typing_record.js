@@ -3,7 +3,7 @@ const { faker } = require('@faker-js/faker');
 exports.seed = async function(knex) {
   await knex('typing_record').del();
 
-  const usersIdObj = await knex('user').select('id');
+  const usersIdObj = await knex('users').select('id');
   const usersId = usersIdObj.map(obj => obj.id);
 
   // typing_record テーブルのデータを作成

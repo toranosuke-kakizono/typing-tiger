@@ -11,7 +11,7 @@ exports.up = function(knex) {
         table.integer('wpm').notNullable();
         table.timestamp('timestamp').defaultTo(knex.fn.now());
 
-        table.foreign('user_id').references('id').inTable('user').onDelete('CASCADE');
+        table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE');
     });
 };
 

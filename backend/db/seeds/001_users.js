@@ -5,10 +5,10 @@ const { faker } = require('@faker-js/faker');
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
-  await knex('user').del();
+  await knex('users').del();
 
   // シーケンスをリセット
-  await knex.raw('ALTER SEQUENCE user_id_seq RESTART WITH 1');
+  await knex.raw('ALTER SEQUENCE users_id_seq RESTART WITH 1');
 
   const users = [];
   for (let i = 0; i < 10; i++) {
@@ -21,5 +21,5 @@ exports.seed = async function(knex) {
     });
   }
 
-  await knex('user').insert(users);
+  await knex('users').insert(users);
 };

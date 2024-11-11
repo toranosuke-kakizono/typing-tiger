@@ -1,7 +1,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable('typo_key_count', (table) => {
         table.integer('user_id').notNullable();
-        table.foreign('user_id').references('id').inTable('user').onDelete('CASCADE');
+        table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE');
 
         table.integer('typo_a_key');
         table.integer('typo_b_key');
