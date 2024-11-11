@@ -8,16 +8,16 @@ module.exports = {
             database: "soloProject",
         },
         migrations: {
-            directory: "./src/data/migrations",
+            directory: "./db/migrations",
         },
-        seeds: { directory: "./src/data/seeds" },
+        seeds: { directory: "./db/seeds" },
     },
     production: {
         client: "pg",
         connection: process.env.RENDER_URL,
         migrations: {
-            directory: "./src/data/migrations",
+            directory: "./db/migrations",
         },
-        seeds: { directory: "./src/data/seeds" },
+        seeds: { directory: "./db/seeds" },
     }
 }

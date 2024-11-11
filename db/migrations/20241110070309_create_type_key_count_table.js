@@ -1,0 +1,63 @@
+exports.up = function(knex) {
+    return knex.schema.createTable('type_key_count', (table) => {
+        table.integer('user_id').notNullable();
+        table.foreign('user_id').references('id').inTable('user').onDelete('CASCADE');
+
+        table.integer('a_key');
+        table.integer('b_key');
+        table.integer('c_key');
+        table.integer('d_key');
+        table.integer('e_key');
+        table.integer('f_key');
+        table.integer('g_key');
+        table.integer('h_key');
+        table.integer('i_key');
+        table.integer('j_key');
+        table.integer('k_key');
+        table.integer('l_key');
+        table.integer('m_key');
+        table.integer('n_key');
+        table.integer('o_key');
+        table.integer('p_key');
+        table.integer('q_key');
+        table.integer('r_key');
+        table.integer('s_key');
+        table.integer('t_key');
+        table.integer('u_key');
+        table.integer('v_key');
+        table.integer('w_key');
+        table.integer('x_key');
+        table.integer('y_key');
+        table.integer('z_key');
+        table.integer('A_key');
+        table.integer('B_key');
+        table.integer('C_key');
+        table.integer('D_key');
+        table.integer('E_key');
+        table.integer('F_key');
+        table.integer('G_key');
+        table.integer('H_key');
+        table.integer('I_key');
+        table.integer('J_key');
+        table.integer('K_key');
+        table.integer('L_key');
+        table.integer('M_key');
+        table.integer('N_key');
+        table.integer('O_key');
+        table.integer('P_key');
+        table.integer('Q_key');
+        table.integer('R_key');
+        table.integer('S_key');
+        table.integer('T_key');
+        table.integer('U_key');
+        table.integer('V_key');
+        table.integer('W_key');
+        table.integer('X_key');
+        table.integer('Y_key');
+        table.integer('Z_key');
+    });
+};
+
+exports.down = function(knex) {
+    return knex.schema.dropTable('type_key_count');
+};

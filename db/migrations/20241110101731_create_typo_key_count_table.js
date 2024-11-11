@@ -1,0 +1,63 @@
+exports.up = function(knex) {
+    return knex.schema.createTable('typo_key_count', (table) => {
+        table.integer('user_id').notNullable();
+        table.foreign('user_id').references('id').inTable('user').onDelete('CASCADE');
+
+        table.integer('typo_a_key');
+        table.integer('typo_b_key');
+        table.integer('typo_c_key');
+        table.integer('typo_d_key');
+        table.integer('typo_e_key');
+        table.integer('typo_f_key');
+        table.integer('typo_g_key');
+        table.integer('typo_h_key');
+        table.integer('typo_i_key');
+        table.integer('typo_j_key');
+        table.integer('typo_k_key');
+        table.integer('typo_l_key');
+        table.integer('typo_m_key');
+        table.integer('typo_n_key');
+        table.integer('typo_o_key');
+        table.integer('typo_p_key');
+        table.integer('typo_q_key');
+        table.integer('typo_r_key');
+        table.integer('typo_s_key');
+        table.integer('typo_t_key');
+        table.integer('typo_u_key');
+        table.integer('typo_v_key');
+        table.integer('typo_w_key');
+        table.integer('typo_x_key');
+        table.integer('typo_y_key');
+        table.integer('typo_z_key');
+        table.integer('typo_A_key');
+        table.integer('typo_B_key');
+        table.integer('typo_C_key');
+        table.integer('typo_D_key');
+        table.integer('typo_E_key');
+        table.integer('typo_F_key');
+        table.integer('typo_G_key');
+        table.integer('typo_H_key');
+        table.integer('typo_I_key');
+        table.integer('typo_J_key');
+        table.integer('typo_K_key');
+        table.integer('typo_L_key');
+        table.integer('typo_M_key');
+        table.integer('typo_N_key');
+        table.integer('typo_O_key');
+        table.integer('typo_P_key');
+        table.integer('typo_Q_key');
+        table.integer('typo_R_key');
+        table.integer('typo_S_key');
+        table.integer('typo_T_key');
+        table.integer('typo_U_key');
+        table.integer('typo_V_key');
+        table.integer('typo_W_key');
+        table.integer('typo_X_key');
+        table.integer('typo_Y_key');
+        table.integer('typo_Z_key');
+    });
+};
+
+exports.down = function(knex) {
+    return knex.schema.dropTable('typo_key_count');
+};

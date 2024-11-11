@@ -8,12 +8,15 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "migrate": "knex migrate:latest",
+    "migrate-rollback": "Knex migrate:rollback",
     "migrate-make": "knex migrate:make",
     "seed": "knex seed:run",
     "seed-make": "knex seed:make"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
     "dotenv": "^16.4.5",
+    "jotai": "^2.10.1",
     "knex": "^3.1.0",
     "pg": "^8.13.1",
     "react": "^18.3.1",
