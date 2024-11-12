@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {atom, useAtom, useAtomValue} from "jotai";
-import {recordAtom, loginUserAtom} from "../globalAtoms.jsx";
+import {recordAtom, loginUserAtom} from "../../../atoms/globalAtoms.jsx";
 import dayjs from 'dayjs';
-import './Record.css'
+import '../styles/Record.css'
 
 const loadingAtom = atom(true);
 

@@ -1,16 +1,17 @@
 import React, {useEffect} from "react";
 import {atom, useAtom, useAtomValue} from "jotai";
-import {allRecordsAtom, bestRecordAtom,loginUserAtom} from "../globalAtoms.jsx";
+import {loginUserAtom} from "../../../atoms/globalAtoms.jsx";
+import {allRecordsAtom, bestRecordAtom} from "../../../atoms/RecordAtoms.jsx";
 import dayjs from 'dayjs';
-import "./AllRecords.jsx.css";
+import "../styles/AllRecords.css";
 
 const loadingAtom = atom(true);
 
 function AllRecords() {
+    const loginUserId = useAtomValue(loginUserAtom);
     const [loading, setLoading] = useAtom(loadingAtom);
     const [allRecords, setAllRecords] = useAtom(allRecordsAtom);
     const [bestRecord, setBestRecord] = useAtom(bestRecordAtom);
-    const loginUserId = useAtomValue(loginUserAtom);
 
     useEffect(() => {
         async function fetchData() {
@@ -70,7 +71,7 @@ function AllRecords() {
             <table>
                 <thead>
                 <tr>
-                <th>wpm</th>
+                    <th>wpm</th>
                     <th>acc</th>
                     <th>timestamp</th>
                 </tr>
