@@ -1,7 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const routes = require('./routes');
 
 const app = express();
+
+// CORS設定
+app.use(cors());
 
 // ルート設定
 app.use('/api', routes);

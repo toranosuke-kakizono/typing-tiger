@@ -9,7 +9,9 @@ exports.seed = async function(knex) {
   // typing_record テーブルのデータを作成
   const typingRecords = [];
 
-  for (let i = 0; i < usersId.length; i++) {
+  for (let i = 0; i < 300; i++) {
+    const randomIndex = Math.floor(Math.random() * usersId.length);
+
     const accurate_word_count = faker.number.int({ min: 80, max: 400 });
     const inaccurate_word_count = faker.number.int({ min: 0, max: 100 });
     const word_count = accurate_word_count + inaccurate_word_count;
@@ -17,7 +19,7 @@ exports.seed = async function(knex) {
 
     typingRecords.push({
       room_id: faker.string.uuid(),
-      user_id: usersId[i],
+      user_id: usersId[randomIndex],
       word_count: faker.number.int({ min: 100, max: 500 }),
       seconds: seconds,
       accurate_word_count,
