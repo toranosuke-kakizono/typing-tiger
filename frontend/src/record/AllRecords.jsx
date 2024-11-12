@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {atom, useAtom, useAtomValue} from "jotai";
-import {allRecordsAtom, bestAtom,loginUserAtom} from "../App.jsx";
+import {allRecordsAtom, bestRecordAtom,loginUserAtom} from "../globalAtoms.jsx";
 import dayjs from 'dayjs';
 import "./AllRecords.jsx.css";
 
@@ -9,7 +9,7 @@ const loadingAtom = atom(true);
 function AllRecords() {
     const [loading, setLoading] = useAtom(loadingAtom);
     const [allRecords, setAllRecords] = useAtom(allRecordsAtom);
-    const [bestRecord, setBestRecord] = useAtom(bestAtom);
+    const [bestRecord, setBestRecord] = useAtom(bestRecordAtom);
     const loginUserId = useAtomValue(loginUserAtom);
 
     useEffect(() => {

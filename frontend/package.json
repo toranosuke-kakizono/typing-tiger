@@ -11,8 +11,10 @@
   "dependencies": {
     "dayjs": "^1.11.13",
     "jotai": "^2.10.1",
+    "pokemon": "^3.2.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "word-list-json": "^0.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

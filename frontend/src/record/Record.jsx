@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {atom, useAtom, useAtomValue} from "jotai";
-import {recordAtom, loginUserAtom} from "../App.jsx";
+import {recordAtom, loginUserAtom} from "../globalAtoms.jsx";
 import dayjs from 'dayjs';
 import './Record.css'
 
