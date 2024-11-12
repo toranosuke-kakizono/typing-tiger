@@ -24,3 +24,30 @@ exports.getAllRecordsById = async (req, res) => {
         res.status(500).json({ message: 'タイピング記録の取得に失敗しました', error})
     }
 }
+
+// 特定のユーザーから最新のレコードを取得
+exports.getRecordById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const record = await knex('typing_records')
+            .where('user_id', userId)
+            .first('*');
+        res.status(200).json(record);
+    } catch(error) {
+        res.status(500).json({ message: 'タイピング記録の取得に失敗しました', error})
+    }
+}
+
+// 特定のユーザーの自己ベストを取得
+exports.getBestRecordById = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const record = await knex('typing_records')
+            .where('user_id', userId)
+            .orderBy('wpm', 'desc')
+            .first('*');
+        res.status(200).json(record);
+    } catch(error) {
+        res.status(500).json({ message: 'タイピング記録の取得に失敗しました', error})
+    }
+}

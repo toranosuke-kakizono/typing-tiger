@@ -5,8 +5,8 @@ exports.up = function(knex) {
         table.integer('user_id').notNullable();
         table.integer('word_count').notNullable();
         table.integer('seconds').notNullable();
-        table.integer('accurate_word_count').notNullable();
-        table.integer('inaccurate_word_count').notNullable();
+        table.integer('type_count').notNullable();
+        table.integer('typo_count').notNullable();
         table.integer('accuracy').notNullable();
         table.integer('wpm').notNullable();
         table.timestamp('timestamp').defaultTo(knex.fn.now());
