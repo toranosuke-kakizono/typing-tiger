@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const userRoutes = require('./usersRoutes');
+router.use(express.json());
 
-router.use('/users', userRoutes);
+const usersRoutes = require('./usersRoutes');
+router.use('/users', usersRoutes);
+
+const recordsRoutes = require('./recordsRoutes');
+router.use('/records', recordsRoutes);
+
+const typeKeyCountRoutes = require('./typeKeyCountRoutes');
+router.use('/typeKeyCount', typeKeyCountRoutes);
+
+const typoKeyCountRoutes = require('./typoKeyCountRoutes');
+router.use('/typoKeyCount', typoKeyCountRoutes);
+
 
 module.exports = router;

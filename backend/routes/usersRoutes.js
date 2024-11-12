@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/usersController');
+const usersController = require('../controllers/usersController');
 
 // ユーザーを新規作成
-router.post('/:id', userController.createUser);
+router.post('/createUser', usersController.createUser);
 
 // 全ユーザーを取得
-router.get('/', userController.getAllUsers);
+router.get('/', usersController.getAllUsers);
 
 // 特定のユーザーを取得
-router.get('/:id', userController.getUserById);
+router.get('/:id', usersController.getUserById);
 
 
 module.exports = router;
