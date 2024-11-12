@@ -1,0 +1,30 @@
+/*.correct {*/
+/*    color: green;*/
+/*}*/
+
+/*.currentText {*/
+/*    color: gray;*/
+/*    text-decoration: underline;*/
+/*}*/
+
+/*.standby {*/
+/*    color: gray;*/
+/*}*/
+
+
+
+.correct {
+    background-color: #f9f3d7; /* 光をイメージした背景色 */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.currentText {
+    background-color: #fce38a; /* 強調するための虎の模様をイメージ */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.standby {
+    /*opacity: 0.5;*/
+}

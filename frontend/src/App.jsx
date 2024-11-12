@@ -10,9 +10,6 @@ function App() {
   return (
     <>
       <Menu/>
-      <Typing/>
-      <Record/>
-      <AllRecords/>
     </>
   )
 }
