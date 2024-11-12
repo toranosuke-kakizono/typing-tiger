@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+    border-collapse: collapse; /* セルの隙間をなくす */
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 交互の行に背景色を追加 */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
