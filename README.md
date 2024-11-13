@@ -38,7 +38,7 @@
 
 - Node.js (推奨バージョン: 14.x以上)
 - npm または yarn
-- データベース (例: PostgreSQL, MySQL)
+- データベース (例: PostgreSQL)
 
 ### バックエンドのセットアップ
 
