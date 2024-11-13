@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "clear && nodemon server.js",
+    "setup": "cp .env.example .env && npm install",
+    "start": "nodemon server.js",
     "migrate": "knex migrate:latest",
     "migrate-rollback": "Knex migrate:rollback",
     "migrate-make": "knex migrate:make",
