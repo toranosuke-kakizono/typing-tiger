@@ -2,23 +2,23 @@ import pokemon from "pokemon";
 import {
     currentWordAtom,
     inputWordAtom,
-    typeKeyCountAtom,
-    typoKeyCountAtom,
+    accurateKeyCount,
+    inaccurateKeyCount,
     isCountdownAtom
 } from '../../../atoms/typingGameAtoms.jsx';
 import { useSetAtom } from "jotai";
 
 const useStartGame = () => {
     const setIsCountdownActive = useSetAtom(isCountdownAtom);
-    const setCorrectKeyPressCount = useSetAtom(typeKeyCountAtom);
-    const setIncorrectKeyPressCount = useSetAtom(typoKeyCountAtom);
+    const setAccurateKeyPressCount = useSetAtom(accurateKeyCount);
+    const setInaccurateKeyPressCount = useSetAtom(inaccurateKeyCount);
     const setCurrentTargetWord = useSetAtom(currentWordAtom);
     const setUserInputWord = useSetAtom(inputWordAtom);
 
     return () => {
         setIsCountdownActive(false);
-        setCorrectKeyPressCount(0);
-        setIncorrectKeyPressCount(0);
+        setAccurateKeyPressCount(0);
+        setInaccurateKeyPressCount(0);
         setCurrentTargetWord(pokemon.random().toLowerCase());
         setUserInputWord('');
     };

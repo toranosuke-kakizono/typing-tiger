@@ -1,26 +1,26 @@
 import React, { useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { timerAtom, isGameRunningAtom } from '../../../atoms/typingGameAtoms.jsx';
+import { isGameRunningAtom, playTimeAtom } from '../../../atoms/typingGameAtoms.jsx';
 import {currentComponentAtom,} from "../../../atoms/globalAtoms.jsx";
 
 const Timer = () => {
-    const [timer, setTimer] = useAtom(timerAtom);
     const [isGameRunning, setIsGameRunning] = useAtom(isGameRunningAtom);
     const [currentComponent, setCurrentComponent] = useAtom(currentComponentAtom);
+    const [playTime, setPlayTime] = useAtom(playTimeAtom);
 
     useEffect(() => {
-        if (isGameRunning && timer > 0) {
+        if (isGameRunning && playTime > 0) {
             const interval = setInterval(() => {
-                setTimer((prev) => prev - 1);
+                setPlayTime((prev) => prev - 1);
             }, 1000);
             return () => clearInterval(interval);
-        } else if (timer === 0) {
+        } else if (playTime === 0) {
             setIsGameRunning(false);
             setCurrentComponent('Record');
         }
-    }, [isGameRunning, timer]);
+    }, [isGameRunning, playTime]);
 
-    return <p>Time: {timer}s</p>;
+    return <p>Time: {playTime}s</p>;
 };
 
 export default Timer;

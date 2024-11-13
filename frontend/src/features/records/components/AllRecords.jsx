@@ -41,6 +41,8 @@ function AllRecords() {
         return <tr key={record.id}>
             <td>{record.wpm}</td>
             <td>{record.accuracy}%</td>
+            <td>{record.accurate_key_count} key</td>
+            <td>{record.inaccurate_key_count} key</td>
             <td>{dayjs(record.timestamp).format('YYYY/MM/DD HH:mm')}</td>
         </tr>
     })
@@ -58,6 +60,8 @@ function AllRecords() {
                 <tr>
                     <th>wpm</th>
                     <th>acc</th>
+                    <th>accurate✅</th>
+                    <th>inaccurate❌</th>
                     <th>timestamp</th>
                 </tr>
                 </thead>
@@ -65,6 +69,8 @@ function AllRecords() {
                 <tr>
                     <th>{bestRecord.wpm}</th>
                     <th>{bestRecord.accuracy}%</th>
+                    <td>{bestRecord.accurate_key_count} key</td>
+                    <td>{bestRecord.inaccurate_key_count} key</td>
                     <th>{dayjs(bestRecord.timestamp).format('YYYY/MM/DD HH:mm')}</th>
                 </tr>
                 </tbody>
@@ -75,6 +81,8 @@ function AllRecords() {
                 <tr>
                     <th>wpm</th>
                     <th>acc</th>
+                    <th>accurate✅</th>
+                    <th>inaccurate❌</th>
                     <th>timestamp</th>
                 </tr>
                 </thead>

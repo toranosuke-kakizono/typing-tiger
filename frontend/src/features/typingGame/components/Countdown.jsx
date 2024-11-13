@@ -1,12 +1,13 @@
 import {useEffect} from 'react';
 import {useAtom} from "jotai";
-import {countdownAtom} from "../../../atoms/globalAtoms.jsx";
+import {countdownAtom, currentComponentAtom} from "../../../atoms/globalAtoms.jsx";
 import {isGameRunningAtom} from "../../../atoms/typingGameAtoms.jsx";
 import useStartGame from "../hooks/startCountdown.js";
 
-const Countdown = ({onCountdownComplete}) => {
+const Countdown = () => {
     const [countdown, setCountdown] = useAtom(countdownAtom);
     const [isGameRunning, setIsGameRunning] = useAtom(isGameRunningAtom);
+    const [currentComponent, setCurrentComponent] = useAtom(currentComponentAtom);
 
     const startGame = useStartGame();
 
@@ -19,11 +20,11 @@ const Countdown = ({onCountdownComplete}) => {
             return () => clearInterval(interval);　// クリーンアップ
         } else {
             // カウントダウン終了時の処理
-            onCountdownComplete('TypingGame');
+            setCurrentComponent('TypingGame');
             setIsGameRunning(true);
             startGame();
         }
-    }, [countdown, onCountdownComplete]);
+    }, [countdown, setCurrentComponent]);
 
     return (
         <div className="countdown">

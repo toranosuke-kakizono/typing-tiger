@@ -8,7 +8,6 @@ function Home() {
         <>
             <h1>Tiger Typing</h1>
             <button onClick={() => {
-                console.log("clicked");
                 setCurrentComponents('Countdown')
             }}>Game start</button>
             <button onClick={() => setCurrentComponents('AllRecords')}>Your records</button>

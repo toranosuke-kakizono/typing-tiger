@@ -5,19 +5,22 @@ import pokemon from 'pokemon';
 
 // コンポーネント
 import Timer from './Timer.jsx';
-import TypingStats from './TypingStats.jsx';
+import CurrentRecord from "./CurrentRecord.jsx";
 import WordHighlight from './WordHighlight.jsx';
 import Countdown from './Countdown.jsx';
 
-// グローバルステート(Atom)
+
+// タイピングゲームのステート(Atom)
 import {
     currentWordAtom,
     inputWordAtom,
-    typeKeyCountAtom,
-    typoKeyCountAtom,
-    timerAtom,
+    accurateKeyCount,
+    inaccurateKeyCount,
     isGameRunningAtom,
     isCountdownAtom,
+    playTimeAtom,
+    wpmAtom,
+    accuracyAtom,
 } from '../../../atoms/typingGameAtoms.jsx';
 
 // その他
@@ -28,11 +31,13 @@ import '../styles/Typing.css';
 const TypingGame = () => {
     const [currentTargetWord, setCurrentTargetWord] = useAtom(currentWordAtom);
     const [userInputWord, setUserInputWord] = useAtom(inputWordAtom);
-    const [correctKeyPressCount, setCorrectKeyPressCount] = useAtom(typeKeyCountAtom);
-    const [incorrectKeyPressCount, setIncorrectKeyPressCount] = useAtom(typoKeyCountAtom);
-    const remainingTime = useAtomValue(timerAtom); // ここでは値の読み取りだけなのでuseAtomValue
+    const [accurateKeyPressCount, setAccurateKeyPressCount] = useAtom(accurateKeyCount);
+    const [inaccurateKeyPressCount, setInaccurateKeyPressCount] = useAtom(inaccurateKeyCount);
     const isGameActive = useAtomValue(isGameRunningAtom); // 値の読み取りだけなのでuseAtomValue
     const [isCountdownActive, setIsCountdownActive] = useAtom(isCountdownAtom);
+    const [playTime, setPlayTime] = useAtom(playTimeAtom);
+    const [wpm, setWpm] = useAtom(wpmAtom);
+    const [accuracy, setAccuracy] = useAtom(accuracyAtom);
 
     useDisableSpaceScroll();
 
@@ -40,7 +45,7 @@ const TypingGame = () => {
         if (isGameActive) {
             const handleKeydown = (e) => {
                 const key = e.key;
-                setCorrectKeyPressCount((count) => count + 1);
+                setAccurateKeyPressCount((count) => count + 1);
 
                 if (currentTargetWord.startsWith(userInputWord + key)) {
                     setUserInputWord((word) => word + key);
@@ -49,37 +54,28 @@ const TypingGame = () => {
                         setUserInputWord('');
                     }
                 } else {
-                    setIncorrectKeyPressCount((count) => count + 1);
+                    setInaccurateKeyPressCount((count) => count + 1);
                 }
             };
+
+            setWpm(Math.floor((accurateKeyPressCount - inaccurateKeyPressCount) / 5 / ((30 - playTime) / 60))); // 30秒のハードコーディング
+            setAccuracy(accurateKeyPressCount > 0 ? Math.floor(((accurateKeyPressCount - inaccurateKeyPressCount) / accurateKeyPressCount) * 100) : 100);
+
 
             window.addEventListener('keydown', handleKeydown);
             return () => window.removeEventListener('keydown', handleKeydown);
         }
     }, [isGameActive, currentTargetWord, userInputWord]);
 
-    const startGame = () => {
-        setIsCountdownActive(false);
-        setCorrectKeyPressCount(0);
-        setIncorrectKeyPressCount(0);
-        setCurrentTargetWord(pokemon.random().toLowerCase());
-        setUserInputWord('');
-    };
-
     return (
         isCountdownActive ? (
-            <Countdown onCountdownComplete={startGame} />
+            <Countdown />
         ) : (
             <div>
                 <h1>Typing Game</h1>
                 <Timer />
-                <TypingStats />
+                <CurrentRecord />
                 <WordHighlight />
-                {isGameActive ? (
-                    <p>Keep typing...</p>
-                ) : (
-                    <button onClick={startCountdown}>Start Game</button>
-                )}
             </div>
         )
     );

@@ -4,6 +4,7 @@ import {loginUserAtom} from "../../../atoms/globalAtoms.jsx";
 import {recordAtom} from "../../../atoms/recordAtoms.jsx";
 import dayjs from 'dayjs';
 import '../styles/Record.css'
+import PostRecord from "../../typingGame/components/PostRecord.jsx";
 
 const loadingAtom = atom(true);
 
@@ -39,6 +40,8 @@ function records() {
             <tr>
                 <th>wpm</th>
                 <th>acc</th>
+                <th>accurate✅</th>
+                <th>inaccurate❌</th>
                 <th>timestamp</th>
             </tr>
             </thead>
@@ -46,6 +49,8 @@ function records() {
             <tr>
                 <td>{record.wpm}</td>
                 <td>{record.accuracy}%</td>
+                <td>{record.accurate_key_count} key</td>
+                <td>{record.inaccurate_key_count} key</td>
                 <td>{dayjs(record.timestamp).format('YYYY/MM/DD HH:mm')}</td>
             </tr>
             </tbody>
