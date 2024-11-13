@@ -3,8 +3,6 @@ import {atom, useAtom, useAtomValue} from "jotai";
 import {loginUserAtom, currentComponentAtom} from "../../../atoms/globalAtoms.jsx";
 import {recordAtom} from "../../../atoms/recordAtoms.jsx";
 import dayjs from 'dayjs';
-import '../styles/Record.css'
-import PostRecord from "../../typingGame/components/PostRecord.jsx";
 
 const loadingAtom = atom(true);
 
