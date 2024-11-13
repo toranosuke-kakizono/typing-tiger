@@ -5,6 +5,30 @@
 シンプルなタイピングゲームです。
 世界的指標になっているWPM（Words Per Minute ）や Accuracy をサーバーに自動で保存し、日々の記録を一覧で確認することができます。
 
+### 技術スタック
+
+#### **バックエンド**
+<p>
+  <img src="https://nodejs.org/static/images/logo.svg" alt="Node.js" width="40" height="40" />
+  <img src="https://knexjs.org/knex-logo.png" alt="Knex.js" width="40" height="40" />
+</p>
+
+#### **フロントエンド**
+<p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" width="40" height="40" />
+  <img src="https://vitejs.dev/logo.svg" alt="Vite" width="40" height="40" />
+</p>
+
+#### **スタイリング**
+<p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS" width="40" height="40" />
+</p>
+
+#### **その他**
+<p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/ESLint_logo.svg/1200px-ESLint_logo.svg.png" alt="ESLint" width="40" height="40" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/220px-GitHub_Invertocat_Logo.svg.png" alt="GitHub" width="40" height="40" />
+</p>
 ## セットアップ
 
 ### 環境構築
