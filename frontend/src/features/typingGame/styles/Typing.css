@@ -5,6 +5,10 @@ h1 {
     margin-bottom: 20px;
 }
 
+.highlight {
+    font-size: 50px;
+}
+
 .correct {
     color: #3e3d3a;
     font-weight: bold;

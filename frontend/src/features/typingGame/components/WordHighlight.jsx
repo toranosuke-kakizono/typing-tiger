@@ -29,7 +29,7 @@ const WordHighlight = () => {
         );
     };
 
-    return <p>{highlightWord()}</p>;
+    return <p className="highlight">{highlightWord()}</p>;
 };
 
 export default WordHighlight;

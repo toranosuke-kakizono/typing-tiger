@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {atom, useAtom, useAtomValue} from "jotai";
-import {loginUserAtom} from "../../../atoms/globalAtoms.jsx";
+import {loginUserAtom, currentComponentAtom} from "../../../atoms/globalAtoms.jsx";
 import {recordAtom} from "../../../atoms/recordAtoms.jsx";
 import dayjs from 'dayjs';
 import '../styles/Record.css'
@@ -12,6 +12,7 @@ function records() {
     const [loading, setLoading] = useAtom(loadingAtom);
     const [record, setRecord] = useAtom(recordAtom);
     const loginUserId = useAtomValue(loginUserAtom);
+    const [currentComponent, setCurrentComponent] = useAtom(currentComponentAtom);
 
     useEffect(() => {
         async function fetchData() {
@@ -34,6 +35,17 @@ function records() {
     }
 
     return (<>
+        <button onClick={() => {
+            setCurrentComponent('Home')
+        }}>
+            Home
+        </button>
+        <button onClick={() => {
+            setCurrentComponent('Countdown')
+        }}>
+            Game start
+        </button>
+
         <h3>スコア</h3>
         <table>
             <thead>
