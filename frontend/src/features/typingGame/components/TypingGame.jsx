@@ -9,7 +9,6 @@ import CurrentRecord from "./CurrentRecord.jsx";
 import WordHighlight from './WordHighlight.jsx';
 import Countdown from './Countdown.jsx';
 
-
 // タイピングゲームのステート(Atom)
 import {
     currentWordAtom,
@@ -24,9 +23,13 @@ import {
 } from '../../../atoms/typingGameAtoms.jsx';
 
 // その他
+import sound1 from '../../../../typeSounds/type_sound1.mp3';
+import sound2 from '../../../../typeSounds/type_sound2.mp3';
+import sound3 from '../../../../typeSounds/type_sound3.mp3';
 import useDisableSpaceScroll from '../hooks/useDisableSpaceScroll.js';
 import '../styles/Typing.css';
 
+const sounds = [sound1, sound2, sound3];
 
 const TypingGame = () => {
     const [currentTargetWord, setCurrentTargetWord] = useAtom(currentWordAtom);
@@ -49,6 +52,10 @@ const TypingGame = () => {
 
                 if (currentTargetWord.startsWith(userInputWord + key)) {
                     setUserInputWord((word) => word + key);
+                    // ランダムな音声を再生
+                    const randomSound = new Audio(sounds[Math.floor(Math.random() * sounds.length)]);
+                    randomSound.currentTime = 0; // 再生位置をリセット
+                    randomSound.play();
                     if (userInputWord + key === currentTargetWord) {
                         setCurrentTargetWord(pokemon.random().toLowerCase());
                         setUserInputWord('');
