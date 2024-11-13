@@ -7,3 +7,4 @@ export const typoKeyCountAtom = atom(0);
 export const secondsAtom = atom(30);
 export const timerAtom = atom(30);
 export const isGameRunningAtom = atom(false);
+export const isCountdownAtom = atom(false);

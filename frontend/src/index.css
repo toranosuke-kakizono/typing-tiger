@@ -10,3 +10,28 @@ body {
     min-height: 100vh;
 }
 
+button {
+    background-color: #bf9d3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin: 20px auto;
+    display: block;
+}
+
+button:hover {
+    background-color: #a17d2c;
+}
+
+button:active {
+    background-color: #896622;
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}

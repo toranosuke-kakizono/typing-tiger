@@ -1,73 +1,87 @@
+// ライブラリ
 import React, { useEffect } from 'react';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import pokemon from 'pokemon';
+
+// コンポーネント
+import Timer from './Timer.jsx';
+import TypingStats from './TypingStats.jsx';
+import WordHighlight from './WordHighlight.jsx';
+import Countdown from './Countdown.jsx';
+
+// グローバルステート(Atom)
 import {
     currentWordAtom,
     inputWordAtom,
     typeKeyCountAtom,
     typoKeyCountAtom,
     timerAtom,
-    isGameRunningAtom
+    isGameRunningAtom,
+    isCountdownAtom,
 } from '../../../atoms/typingGameAtoms.jsx';
+
+// その他
 import useDisableSpaceScroll from '../hooks/useDisableSpaceScroll.js';
-import Timer from './Timer.jsx';
-import TypingStats from './TypingStats.jsx';
-import WordHighlight from './WordHighlight.jsx';
 import '../styles/Typing.css';
 
+
 const TypingGame = () => {
-    const [currentWord, setCurrentWord] = useAtom(currentWordAtom);
-    const [inputWord, setInputWord] = useAtom(inputWordAtom);
-    const [typeKeyCount, setTypeKeyCount] = useAtom(typeKeyCountAtom);
-    const [typoKeyCount, setTypoKeyCount] = useAtom(typoKeyCountAtom);
-    const [timer, setTimer] = useAtom(timerAtom);
-    const [isGameRunning, setIsGameRunning] = useAtom(isGameRunningAtom);
+    const [currentTargetWord, setCurrentTargetWord] = useAtom(currentWordAtom);
+    const [userInputWord, setUserInputWord] = useAtom(inputWordAtom);
+    const [correctKeyPressCount, setCorrectKeyPressCount] = useAtom(typeKeyCountAtom);
+    const [incorrectKeyPressCount, setIncorrectKeyPressCount] = useAtom(typoKeyCountAtom);
+    const remainingTime = useAtomValue(timerAtom); // ここでは値の読み取りだけなのでuseAtomValue
+    const isGameActive = useAtomValue(isGameRunningAtom); // 値の読み取りだけなのでuseAtomValue
+    const [isCountdownActive, setIsCountdownActive] = useAtom(isCountdownAtom);
 
     useDisableSpaceScroll();
 
     useEffect(() => {
-        if (isGameRunning) {
+        if (isGameActive) {
             const handleKeydown = (e) => {
                 const key = e.key;
-                setTypeKeyCount((count) => count + 1);
+                setCorrectKeyPressCount((count) => count + 1);
 
-                if (currentWord.startsWith(inputWord + key)) {
-                    setInputWord((word) => word + key);
-                    if (inputWord + key === currentWord) {
-                        setCurrentWord(pokemon.random().toLowerCase());
-                        setInputWord('');
+                if (currentTargetWord.startsWith(userInputWord + key)) {
+                    setUserInputWord((word) => word + key);
+                    if (userInputWord + key === currentTargetWord) {
+                        setCurrentTargetWord(pokemon.random().toLowerCase());
+                        setUserInputWord('');
                     }
                 } else {
-                    setTypoKeyCount((count) => count + 1);
+                    setIncorrectKeyPressCount((count) => count + 1);
                 }
             };
 
             window.addEventListener('keydown', handleKeydown);
             return () => window.removeEventListener('keydown', handleKeydown);
         }
-    }, [isGameRunning, currentWord, inputWord]);
+    }, [isGameActive, currentTargetWord, userInputWord]);
 
     const startGame = () => {
-        setIsGameRunning(true);
-        setTimer(30);
-        setTypeKeyCount(0);
-        setTypoKeyCount(0);
-        setCurrentWord(pokemon.random().toLowerCase());
-        setInputWord('');
+        setIsCountdownActive(false);
+        setCorrectKeyPressCount(0);
+        setIncorrectKeyPressCount(0);
+        setCurrentTargetWord(pokemon.random().toLowerCase());
+        setUserInputWord('');
     };
 
     return (
-        <div>
-            <h1>Typing Game</h1>
-            <Timer />
-            <TypingStats />
-            <WordHighlight />
-            {isGameRunning ? (
-                <p>Keep typing...</p>
-            ) : (
-                <button onClick={startGame}>Start Game</button>
-            )}
-        </div>
+        isCountdownActive ? (
+            <Countdown onCountdownComplete={startGame} />
+        ) : (
+            <div>
+                <h1>Typing Game</h1>
+                <Timer />
+                <TypingStats />
+                <WordHighlight />
+                {isGameActive ? (
+                    <p>Keep typing...</p>
+                ) : (
+                    <button onClick={startCountdown}>Start Game</button>
+                )}
+            </div>
+        )
     );
 };
 

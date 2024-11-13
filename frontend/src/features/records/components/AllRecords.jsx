@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {atom, useAtom, useAtomValue} from "jotai";
-import {loginUserAtom} from "../../../atoms/globalAtoms.jsx";
-import {allRecordsAtom, bestRecordAtom} from "../../../atoms/RecordAtoms.jsx";
+import {loginUserAtom, currentComponentAtom} from "../../../atoms/globalAtoms.jsx";
+import {allRecordsAtom, bestRecordAtom} from "../../../atoms/recordAtoms.jsx";
 import dayjs from 'dayjs';
 import "../styles/AllRecords.css";
 
@@ -9,6 +9,7 @@ const loadingAtom = atom(true);
 
 function AllRecords() {
     const loginUserId = useAtomValue(loginUserAtom);
+    const [currentComponent, setCurrentComponent] = useAtom(currentComponentAtom);
     const [loading, setLoading] = useAtom(loadingAtom);
     const [allRecords, setAllRecords] = useAtom(allRecordsAtom);
     const [bestRecord, setBestRecord] = useAtom(bestRecordAtom);
@@ -50,6 +51,7 @@ function AllRecords() {
 
     return (
         <>
+            <button onClick={() => setCurrentComponent('Home')}>Home</button>
             <h3>自己ベスト</h3>
             <table>
                 <thead>

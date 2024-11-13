@@ -1,0 +1,23 @@
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f1e9;
+    font-family: 'Noto Serif JP', serif;
+    color: #bf9d3c;
+}
+
+.countdown h1 {
+    font-size: 5rem;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

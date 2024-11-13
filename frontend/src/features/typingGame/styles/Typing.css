@@ -5,33 +5,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-button {
-    background-color: #bf9d3c;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-button:hover {
-    background-color: #a17d2c;
-}
-
-button:active {
-    background-color: #896622;
-}
-
-p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
 .correct {
     color: #3e3d3a;
     font-weight: bold;
